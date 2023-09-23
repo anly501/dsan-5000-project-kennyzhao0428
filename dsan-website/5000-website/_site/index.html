@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DSAN-5000: Project - DSAN-5000: Introduction</title>
+<title>DSAN-5000: Project - Introduction: How to relax effectively</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,16 +81,56 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="./Data/Data.html" rel="" target="">
+ <span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Code/Code.html" rel="" target="">
+ <span class="menu-text">Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./aboutme/aboutme.html" rel="" target="">
+ <span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Data Gathering/Data Gathering.html" rel="" target="">
+ <span class="menu-text">Data Gathering</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Data Cleaning/Data Cleaning.html" rel="" target="">
+ <span class="menu-text">Data Cleaning</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./eda/eda.html" rel="" target="">
+ <span class="menu-text">Data Exploration</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./clustering/clustering.html" rel="" target="">
  <span class="menu-text">Clustering</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./eda/eda.html" rel="" target="">
- <span class="menu-text">Data Exploration</span></a>
+    <a class="nav-link" href="./Dimensionality reduction/Dimentionality.qmd" rel="" target="">
+ <span class="menu-text">Dimensionality reduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Dicision Trees/Classification.qmd" rel="" target="">
+ <span class="menu-text">Classification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Dicision Trees/Regression.qmd" rel="" target="">
+ <span class="menu-text">Regression</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ARM/ARM.html" rel="" target="">
+ <span class="menu-text">ARM</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Conclusions/Conclusion.qmd" rel="" target="">
+ <span class="menu-text">Conclusion</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -104,14 +144,25 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#research-background" id="toc-research-background" class="nav-link active" data-scroll-target="#research-background">Research Background</a></li>
+  <li><a href="#research-purpose" id="toc-research-purpose" class="nav-link" data-scroll-target="#research-purpose">Research Purpose</a></li>
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#significance-of-the-study" id="toc-significance-of-the-study" class="nav-link" data-scroll-target="#significance-of-the-study">Significance of the Study</a></li>
+  <li><a href="#expected-outcomes" id="toc-expected-outcomes" class="nav-link" data-scroll-target="#expected-outcomes">Expected Outcomes</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DSAN-5000: Introduction</h1>
+<h1 class="title">Introduction: How to relax effectively</h1>
 </div>
 
 
@@ -127,53 +178,72 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>See the following link for more information about the author: <a href="../../index.html">about me</a></p>
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<p><code>HIGHLY RECOMMENDED</code></p>
-<ul>
-<li>It is <code>highly recommended</code> that you build your website using <code>.ipynb</code> files and NOT <code>.qmd</code>files</li>
-<li>Functionally the two formats are basically identical, i.e.&nbsp;they are just <code>Markdown</code> + <code>Code</code></li>
-<li>However there is <code>ONE MAJOR DIFFERENCE</code>, i.e.&nbsp;<code>.ipynb</code> stores the code outputs in the meta-data of the file
-<ul>
-<li>This means you <code>ONLY HAVE TO RUN THE CODE ONCE</code> with <code>.ipynb</code></li>
-<li><code>.qmd</code> will run the code every time you build the website, which can be very slow
-<ul>
-<li>There are <code>caching</code> options for <code>.qmd</code>, however, they are “messier” that just using <code>.ipynb</code></li>
-</ul></li>
-<li><strong>Note</strong>: <code>.qmd</code> is fine if there is no code, in which case it is basically just a <code>Markdown</code> file</li>
-</ul></li>
-<li>Converting between the two
-<ul>
-<li>You can switch between the two formats using</li>
-<li><code>quarto convert clustering.qmd</code> this will output a <code>.ipynb</code> version called <code>clustering.ipynb</code></li>
-<li><code>quarto convert eda.ipynb</code> this will output a <code>.qmd</code> version called <code>eda.qmd</code></li>
-</ul></li>
-<li>YOU CAN RUN <code>R CODE</code> IN VSC WITH <code>.ipynb</code>, see the following link
-<ul>
-<li><a href="https://saturncloud.io/blog/how-to-use-jupyter-r-kernel-with-visual-studio-code/">https://saturncloud.io/blog/how-to-use-jupyter-r-kernel-with-visual-studio-code/</a></li>
-</ul></li>
-<li>It is possible, but <code>NOT RECOMMENDED</code>, to mix Python and R code in the same file</li>
-</ul>
-<p><code>IMPORTANT ASIDE</code></p>
-<ul>
-<li>A <code>.ipynb</code> file is simply a <code>JSON</code> file with a specialized structural format</li>
-<li>You can see this by running <code>more eda/eda.ipynb</code> from the command line</li>
-<li>Which will output the following;<br>
-<img src="images/2023-08-23-09-39-14.png" class="img-fluid" width="500"></li>
-</ul>
-<p><code>TIP FOR MAC USERS</code></p>
-<ul>
-<li><code>command+control+shift+4</code> is very useful on a mac.
-<ul>
-<li>It takes a screenshot and saves it to the clip-board</li>
-</ul></li>
-<li>The following VSC extension allows you to paste images from the clip-board with <code>alt+command+v</code>.<br>
-<img src="images/2023-08-23-09-35-05.png" class="img-fluid" width="300"></li>
-<li><code>tab</code> is your best friend when using the command line, since it does <code>auto-completion</code></li>
-<li><code>open ./path_to_file</code> will open any file or directory from the command line</li>
-</ul>
+<p>Gu id: kz243</p>
+<section id="research-background" class="level2">
+<h2 class="anchored" data-anchor-id="research-background">Research Background</h2>
+<p>In today’s fast-paced modern society, individuals are frequently confronted with significant life stresses. These pressures can arise from work responsibilities, academic demands, social interactions, family obligations, and various challenges of daily life. Simultaneously, the widespread use of electronic devices, information overload, and the prevalence of social media add an additional layer of stress to individuals’ lives. This high-stress lifestyle can often lead to anxiety, depression, physical discomfort, and health issues.</p>
+<p>In this context, relaxation has become a critical factor in maintaining both physical and mental well-being. Relaxation not only aids in relieving bodily tension and fatigue but also enhances emotional tranquility, improves sleep quality, boosts resilience to stress, and promotes healthier lifestyles. However, effective relaxation is more than just reducing fatigue; it also involves learning to manage and cope with the everyday pressures in order to better deal with challenges and important tasks.</p>
+<p>As such, researching how to efficiently relax has emerged as an essential endeavor. Understanding various relaxation methods, investigating their physiological and psychological effects, exploring individual differences, and identifying suitable relaxation strategies for diverse individuals are all indispensable components of helping people navigate the stresses of modern life more effectively. This study aims to delve into various aspects of relaxation, offering valuable insights and recommendations to enhance quality of life, promote health, and foster happiness.</p>
+<p><img src="images/relax1.png" class="img-fluid" width="500"></p>
+</section>
+<section id="research-purpose" class="level2">
+<h2 class="anchored" data-anchor-id="research-purpose">Research Purpose</h2>
+<p>Relaxation is defined as both physical and mental, and most relaxation activities are done from these two aspects. I think there are many relaxation methods, such as meditation, yoga, deep breathing, spa baths, massage, art therapy, etc. Let’s understand how these relaxation methods work and try to analyze their true efficacy. Of course, I think these studies have individual differences to a large extent. For example, some people like sports and feel very comfortable after sports, while some people like to stay at home and watch movies, which means that some people prefer mental relaxation while others prefer physical relaxation. And some people are stressed and some people are not stressed. So consider that some methods work better for some people and may not work for others. I want to study the issue of relaxation from many aspects, and how to better communicate the importance of relaxation and its impact on the body to the public. I think there are also many possibilities for research methods, such as what data to collect to reflect the aspects that you want to study.</p>
+</section>
+<section id="research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
+<ol type="1">
+<li>Effectiveness of Different Relaxation Techniques:</li>
+</ol>
+<p>What are the comparative effectiveness and outcomes of different relaxation techniques such as meditation, yoga, massage, and deep breathing in reducing stress and anxiety? Are certain relaxation methods more suitable for specific individuals or conditions?</p>
+<ol start="2" type="1">
+<li>Physiological and Psychological Effects of Relaxation:</li>
+</ol>
+<p>What physiological changes, such as heart rate, blood pressure, and hormonal levels, are observed during relaxation practices? How does relaxation impact emotional states and psychological well-being?</p>
+<ol start="3" type="1">
+<li>Relationship Between Relaxation and Sleep:</li>
+</ol>
+<p>How does relaxation practice influence sleep quality and duration? Can relaxation techniques be tailored to address sleep-related issues?</p>
+<ol start="4" type="1">
+<li>Relaxation as a Stress Management Strategy:</li>
+</ol>
+<p>To what extent does relaxation serve as an effective stress management strategy? How can individuals incorporate relaxation techniques into their daily lives to cope with chronic stress?</p>
+<ol start="5" type="1">
+<li>Individual Differences in Relaxation Response:</li>
+</ol>
+<p>What individual factors influence how people respond to specific relaxation methods? Are there personality traits or demographics that predict preferences for particular relaxation techniques?</p>
+<ol start="6" type="1">
+<li>Cultural and Social Influences:</li>
+</ol>
+<p>How do cultural beliefs and practices influence attitudes toward relaxation? What role do social support and interactions play in relaxation and mental well-being?</p>
+<ol start="7" type="1">
+<li>Technology and Applications in Relaxation:</li>
+</ol>
+<p>What is the impact of technology and relaxation applications in providing guidance and facilitating relaxation practices? How do virtual reality experiences and biofeedback technologies enhance relaxation experiences?</p>
+<ol start="8" type="1">
+<li>Relaxation Education and Public Awareness:</li>
+</ol>
+<p>What are effective strategies for educating the public about the importance of relaxation and its methods? Does relaxation education contribute to reducing societal stress levels?</p>
+<ol start="9" type="1">
+<li>Long-Term Effects of Relaxation Practices:</li>
+</ol>
+<p>Do individuals who regularly practice relaxation experience enduring benefits in terms of health and well-being? What are the long-term health and happiness implications of relaxation?</p>
+<ol start="10" type="1">
+<li>Relaxation and Work Efficiency:</li>
+</ol>
+<p>How does relaxation impact work efficiency, productivity, and creativity? How can relaxation practices be integrated into work environments to enhance performance?</p>
+</section>
+<section id="significance-of-the-study" class="level1">
+<h1>Significance of the Study</h1>
+</section>
+<section id="expected-outcomes" class="level1">
+<h1>Expected Outcomes</h1>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
