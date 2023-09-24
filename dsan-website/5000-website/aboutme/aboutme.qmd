@@ -4,9 +4,11 @@ title: "About Me"
 
 1. Gu id : kz243
 
+2. Kaining Zhao
+
 ## Hello!
 
-My name is Kaining Zhao. I'm from Beijing, China, I think I'm a cheerful person who likes to hang out and have dinner with friends. In terms of study, I am very interested in statistics, and computers can bring me great help in learning statistics and allow me to use statistical knowledge very well. So I came to this project in data science. Nice to meet you all!
+My name is Kaining Zhao. You can call me Kenny. I'm from Beijing, China, I think I'm a cheerful person who likes to hang out and have dinner with friends. In terms of study, I am very interested in statistics, and computers can bring me great help in learning statistics and allow me to use statistical knowledge very well. So I came to this project in data science. Nice to meet you all!
 
 
 ## Education Background
