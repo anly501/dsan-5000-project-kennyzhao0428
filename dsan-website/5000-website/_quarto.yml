@@ -7,6 +7,8 @@ website:
     left:
       - href: Data/Data.qmd
         text: Data
+      - href: Data/APIData.ipynb
+        text: APIData
       - href: Code/Code.qmd
         text: Code
       - href: aboutme/aboutme.qmd

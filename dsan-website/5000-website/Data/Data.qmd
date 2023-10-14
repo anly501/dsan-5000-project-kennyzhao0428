@@ -2,20 +2,25 @@
 title: "DATA"
 ---
 
-link to my git hub
+[can find the data here](https://www.cso.ie/en/releasesandpublications/ep/p-smt/sustainablemobilityandtransport2021/electricvehicles/)
 
+# we can get these data :
 
+![original_data_82](image/82.png){width=400}
 
+![original_data_26](image/26.png){width=1500}
 
+# After cleaning we can get :
 
+![cleaned_82](image/df0.png){width=400}
 
+![cleaned_26_1](image/df1.png){width=1500}
 
+![cleaned_26_2](image/df2.png){width=1500}
 
+# overview
 
-
-
-
-
+This dataset provides insights into various reasons why individuals do not own an Electric Vehicle (EV) based on age and gender groups. The first column categorizes the respondents by their sex and age groups, such as "Male", "18-29", "30-44", and so on. The subsequent columns list a range of reasons, quantified by percentages, indicating how prevalent each reason is among the respective group. For example, "Cost" seems to be a predominant factor for many age groups. Some cells contain 'N/A', suggesting that the data for that specific category is not available or not applicable. Additionally, there are footnotes at the bottom providing further explanations for specific categories, such as what "Includes lack of power/acceleration in EV" entails. This table offers a comprehensive overview of the potential barriers faced by various demographics when considering the purchase of an EV.
 
 
 

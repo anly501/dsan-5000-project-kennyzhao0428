@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -85,6 +119,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../Data/APIData.html" rel="" target="">
+ <span class="menu-text">APIData</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../Code/Code.html" rel="" target="">
  <span class="menu-text">Code</span></a>
   </li>  
@@ -144,15 +182,258 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#clean-up-the-data-about-proportion-of-electric-cars-owned-by-people-of-different-genders-and-ages" id="toc-clean-up-the-data-about-proportion-of-electric-cars-owned-by-people-of-different-genders-and-ages" class="nav-link active" data-scroll-target="#clean-up-the-data-about-proportion-of-electric-cars-owned-by-people-of-different-genders-and-ages">Clean up the data about proportion of electric cars owned by people of different genders and ages</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
+<section id="clean-up-the-data-about-proportion-of-electric-cars-owned-by-people-of-different-genders-and-ages" class="level2">
+<h2 class="anchored" data-anchor-id="clean-up-the-data-about-proportion-of-electric-cars-owned-by-people-of-different-genders-and-ages">Clean up the data about proportion of electric cars owned by people of different genders and ages</h2>
+<p><a href="https://www.cso.ie/en/releasesandpublications/ep/p-smt/sustainablemobilityandtransport2021/electricvehicles/">can find the data here</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/kenny/Desktop/5000ds/dsan-5000-project-kennyzhao0428-main/dsan-website/5000-website"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Read in the Data</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_excel</span>(<span class="st">"/Users/kenny/Desktop/5000ds/dsan-5000-project-kennyzhao0428-main/dsan-website/5000-website/82.xlsx"</span>, <span class="at">skip =</span> <span class="dv">2</span>) <span class="co"># 跳过前两行标题</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...1`
+• `` -&gt; `...3`
+• `` -&gt; `...4`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Remove Unwanted Rows</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Gender =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">...1</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Male"</span> <span class="sc">~</span> <span class="st">"Male"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">...1</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Female"</span> <span class="sc">~</span> <span class="st">"Female"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(Gender)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Remove unnecessary rows</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(<span class="st">`</span><span class="at">...1</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"All Persons"</span>, <span class="st">"Sex/Age"</span>)))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Fix the accuracy of numbers</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Electric Vehicle (EV) Ownership</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Electric Vehicle (EV) Ownership</span><span class="st">`</span>), <span class="dv">1</span>))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Rename columns</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Age Group</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">...1</span><span class="st">`</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">EV ownership Yes</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">Electric Vehicle (EV) Ownership</span><span class="st">`</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">EV ownership No</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">...3</span><span class="st">`</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">Total =</span> <span class="st">`</span><span class="at">...4</span><span class="st">`</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#Delete useless lines</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">9</span>))</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 5
+   `Age Group` `EV ownership Yes` `EV ownership No` Total Gender
+   &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt; 
+ 1 18-24                      0.2 99.8              100   Male  
+ 2 25-34                      2   98                100   Male  
+ 3 35-44                      0.2 99.8              100   Male  
+ 4 45-54                      2.4 97.6              100   Male  
+ 5 55-64                      2.2 97.8              100   Male  
+ 6 65-74                      1   99                100   Male  
+ 7 75+                        0.8 99.2              100   Male  
+ 8 18-24                      0.4 99.6              100   Female
+ 9 25-34                      1.2 98.8              100   Female
+10 35-44                      1.6 98.4              100   Female
+11 45-54                      1.2 98.8              100   Female
+12 55-64                      2.2 97.8              100   Female
+13 65-74                      3.2 96.8              100   Female
+14 75+                        0.2 99.8              100   Female</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Read in the Data</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read_excel</span>(<span class="st">"/Users/kenny/Desktop/5000ds/dsan-5000-project-kennyzhao0428-main/dsan-website/5000-website/26.xlsx"</span>, <span class="at">skip =</span> <span class="dv">2</span>) <span class="co"># 跳过前两行标题</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...1`
+• `` -&gt; `...3`
+• `` -&gt; `...4`
+• `` -&gt; `...5`
+• `` -&gt; `...6`
+• `` -&gt; `...7`
+• `` -&gt; `...8`
+• `` -&gt; `...9`
+• `` -&gt; `...10`
+• `` -&gt; `...11`
+• `` -&gt; `...12`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Delete useless lines</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">apply</span>(<span class="fu">is.na</span>(.), <span class="dv">1</span>, all))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Fix the accuracy of numbers</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...3</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...3</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...4</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...4</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...5</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...5</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...6</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...6</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...7</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...7</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...8</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...8</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...9</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...9</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...10</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...10</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...11</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...11</span><span class="st">`</span>), <span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">...12</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">...12</span><span class="st">`</span>), <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...3 = round(as.numeric(...3), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...4 = round(as.numeric(...4), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...5 = round(as.numeric(...5), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...6 = round(as.numeric(...6), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...7 = round(as.numeric(...7), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...8 = round(as.numeric(...8), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...9 = round(as.numeric(...9), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...10 = round(as.numeric(...10), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...11 = round(as.numeric(...11), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `...12 = round(as.numeric(...12), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Delete useless lines</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df[<span class="sc">-</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">20</span>), ]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#rename</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)[<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(df)] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Sex/Age group"</span>,<span class="st">"Cost"</span>, <span class="st">"Inadequete public charging facilities"</span>, <span class="st">"No/limited access to home charging"</span>, <span class="st">"Limited range available"</span>, <span class="st">"Don't drive/ own a car"</span>, <span class="st">"Resale value of EV"</span>, <span class="st">"Reliability/ safety concerns"</span>, <span class="st">"No need/ don't know enough"</span>, <span class="st">"Not changing for a while"</span>, <span class="st">"Not available at time of last purchase"</span>, <span class="st">"Other"</span>, <span class="st">"Gender"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in names(df)[1:ncol(df)] = c("Sex/Age group", "Cost", "Inadequete
+public charging facilities", : 被替换的项目不是替换值长度的倍数</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fix the accuracy of numbers</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Cost</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Cost</span><span class="st">`</span>), <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `Cost = round(as.numeric(Cost), 1)`.
+Caused by warning:
+! 强制改变过程中产生了NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reshaping gender data</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Gender =</span> <span class="fu">case_when</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Sex/Age group</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Male"</span> <span class="sc">~</span> <span class="st">"Male"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Sex/Age group</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Female"</span> <span class="sc">~</span> <span class="st">"Female"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(Gender)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Delete useless lines</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>))</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13 × 13
+   `Sex/Age group`  Cost Inadequete public charging fac…¹ No/limited access to…²
+   &lt;chr&gt;           &lt;dbl&gt;                            &lt;dbl&gt;                  &lt;dbl&gt;
+ 1 Total            63.3                             29.3                   21.1
+ 2 18-29            56.6                             18.4                   16.2
+ 3 30-44            68.4                             35.1                   29  
+ 4 45-59            61.2                             35.7                   21.6
+ 5 60-74            69.2                             34.8                   23.8
+ 6 75+              60                               23.9                   18.1
+ 7 Total males      63.7                             31                     22.8
+ 8 18-29            60.3                             20.2                   11.8
+ 9 30-44            67.5                             29.4                   26.1
+10 45-59            67.8                             36.2                   24.1
+11 60-74            60.6                             27.5                   15.3
+12 75+              42.7                             14.4                    7.7
+13 Total females    62.9                             27.8                   19.4
+# ℹ abbreviated names: ¹​`Inadequete public charging facilities`,
+#   ²​`No/limited access to home charging`
+# ℹ 9 more variables: `Limited range available` &lt;dbl&gt;,
+#   `Don't drive/ own a car` &lt;dbl&gt;, `Resale value of EV` &lt;dbl&gt;,
+#   `Reliability/ safety concerns` &lt;dbl&gt;, `No need/ don't know enough` &lt;dbl&gt;,
+#   `Not changing for a while` &lt;dbl&gt;,
+#   `Not available at time of last purchase` &lt;dbl&gt;, Other &lt;dbl&gt;, Gender &lt;chr&gt;</code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
