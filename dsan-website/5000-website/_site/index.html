@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DSAN-5000: Project - DSAN-5000: Introduction</title>
+<title>DSAN-5000: Project - electric vehicles</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,16 +81,56 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="./Data/Data.html" rel="" target="">
+ <span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Code/Code.html" rel="" target="">
+ <span class="menu-text">Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./aboutme/aboutme.html" rel="" target="">
+ <span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Data Gathering/Data Gathering.html" rel="" target="">
+ <span class="menu-text">Data Gathering</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Data Cleaning/Data Cleaning.html" rel="" target="">
+ <span class="menu-text">Data Cleaning</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./eda/eda.html" rel="" target="">
+ <span class="menu-text">Data Exploration</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./clustering/clustering.html" rel="" target="">
  <span class="menu-text">Clustering</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./eda/eda.html" rel="" target="">
- <span class="menu-text">Data Exploration</span></a>
+    <a class="nav-link" href="./Dimensionality reduction/Dimentionality.qmd" rel="" target="">
+ <span class="menu-text">Dimensionality reduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Dicision Trees/Classification.qmd" rel="" target="">
+ <span class="menu-text">Classification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Dicision Trees/Regression.qmd" rel="" target="">
+ <span class="menu-text">Regression</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ARM/ARM.html" rel="" target="">
+ <span class="menu-text">ARM</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Conclusions/Conclusion.qmd" rel="" target="">
+ <span class="menu-text">Conclusion</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -104,14 +144,25 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#research-background" id="toc-research-background" class="nav-link active" data-scroll-target="#research-background">Research Background</a></li>
+  <li><a href="#research-purpose" id="toc-research-purpose" class="nav-link" data-scroll-target="#research-purpose">Research Purpose</a></li>
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#significance-of-the-study" id="toc-significance-of-the-study" class="nav-link" data-scroll-target="#significance-of-the-study">Significance of the Study</a></li>
+  <li><a href="#expected-outcomes" id="toc-expected-outcomes" class="nav-link" data-scroll-target="#expected-outcomes">Expected Outcomes</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DSAN-5000: Introduction</h1>
+<h1 class="title">electric vehicles</h1>
 </div>
 
 
@@ -127,53 +178,57 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>See the following link for more information about the author: <a href="../../index.html">about me</a></p>
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<p><code>HIGHLY RECOMMENDED</code></p>
-<ul>
-<li>It is <code>highly recommended</code> that you build your website using <code>.ipynb</code> files and NOT <code>.qmd</code>files</li>
-<li>Functionally the two formats are basically identical, i.e.&nbsp;they are just <code>Markdown</code> + <code>Code</code></li>
-<li>However there is <code>ONE MAJOR DIFFERENCE</code>, i.e.&nbsp;<code>.ipynb</code> stores the code outputs in the meta-data of the file
-<ul>
-<li>This means you <code>ONLY HAVE TO RUN THE CODE ONCE</code> with <code>.ipynb</code></li>
-<li><code>.qmd</code> will run the code every time you build the website, which can be very slow
-<ul>
-<li>There are <code>caching</code> options for <code>.qmd</code>, however, they are “messier” that just using <code>.ipynb</code></li>
-</ul></li>
-<li><strong>Note</strong>: <code>.qmd</code> is fine if there is no code, in which case it is basically just a <code>Markdown</code> file</li>
-</ul></li>
-<li>Converting between the two
-<ul>
-<li>You can switch between the two formats using</li>
-<li><code>quarto convert clustering.qmd</code> this will output a <code>.ipynb</code> version called <code>clustering.ipynb</code></li>
-<li><code>quarto convert eda.ipynb</code> this will output a <code>.qmd</code> version called <code>eda.qmd</code></li>
-</ul></li>
-<li>YOU CAN RUN <code>R CODE</code> IN VSC WITH <code>.ipynb</code>, see the following link
-<ul>
-<li><a href="https://saturncloud.io/blog/how-to-use-jupyter-r-kernel-with-visual-studio-code/">https://saturncloud.io/blog/how-to-use-jupyter-r-kernel-with-visual-studio-code/</a></li>
-</ul></li>
-<li>It is possible, but <code>NOT RECOMMENDED</code>, to mix Python and R code in the same file</li>
-</ul>
-<p><code>IMPORTANT ASIDE</code></p>
-<ul>
-<li>A <code>.ipynb</code> file is simply a <code>JSON</code> file with a specialized structural format</li>
-<li>You can see this by running <code>more eda/eda.ipynb</code> from the command line</li>
-<li>Which will output the following;<br>
-<img src="images/2023-08-23-09-39-14.png" class="img-fluid" width="500"></li>
-</ul>
-<p><code>TIP FOR MAC USERS</code></p>
-<ul>
-<li><code>command+control+shift+4</code> is very useful on a mac.
-<ul>
-<li>It takes a screenshot and saves it to the clip-board</li>
-</ul></li>
-<li>The following VSC extension allows you to paste images from the clip-board with <code>alt+command+v</code>.<br>
-<img src="images/2023-08-23-09-35-05.png" class="img-fluid" width="300"></li>
-<li><code>tab</code> is your best friend when using the command line, since it does <code>auto-completion</code></li>
-<li><code>open ./path_to_file</code> will open any file or directory from the command line</li>
-</ul>
+<p>Name: Kaining Zhao</p>
+<p>Gu id: kz243</p>
+<section id="research-background" class="level2">
+<h2 class="anchored" data-anchor-id="research-background">Research Background</h2>
+<p>The advent of electric vehicles (EVs) marks a revolutionary shift in the automotive industry, propelling discussions and actions toward sustainable mobility and reduced carbon emissions. This transition, while ostensibly straightforward, is underpinned by a complex tapestry of economic, technological, environmental, and socio-political factors. An exploration into the proliferation of EVs necessitates a nuanced understanding of these multifaceted dimensions.</p>
+<p>The climate imperative, underscored by international commitments like the Paris Agreement, has galvanized numerous nations to reimagine their transportation sectors. Consequently, the EV market has experienced a surge, simultaneously driving and being propelled by technological advancements, particularly in battery technologies and charging infrastructure. The gradual decline in battery costs, improvements in energy density, and enhancement of charging speeds have been pivotal in augmenting the viability and appeal of EVs.</p>
+<p>However, the road to electrification is punctuated with challenges and disparities. The geographical distribution of EV adoption reveals stark contrasts, informed by disparities in policy frameworks, economic capabilities, and public perception across different regions and countries. The development and accessibility of charging infrastructure also manifest variedly, influencing and being influenced by EV penetration in a symbiotic relationship.</p>
+<p>Moreover, the shift to EVs has precipitated economic repercussions, eliciting responses from automotive manufacturers, supply chains, and labor markets, each navigating the balance between maintaining economic viability and aligning with ecological imperatives. In tandem, consumer behavior and preferences, pivotal in steering the market trajectory, evolve in response to the dynamic interplay of technological advancements, policy interventions, and societal perceptions concerning EVs.</p>
+<p>In light of these aspects, this research endeavors to dissect the various facets of the EV landscape, employing a data-driven approach to unveil insights, identify patterns, and comprehend the intricacies embedded within the broader transition to electric mobility. Through the lens of diverse variables such as market trends, technological developments, policy impacts, and socio-economic factors, the ensuing analysis aspires to contribute to the dialogue, inform policy and strategy, and facilitate a comprehensive understanding of the electric vehicle paradigm.</p>
+<p>This research background could be used as a starting point for various types of research into EVs, including market analyses, policy studies, technological evaluations, and more. It integrates various potential research questions and areas previously discussed and can be adapted or expanded based on specific research objectives and questions.</p>
+<p><img src="images/audi.png" class="img-fluid" width="500"></p>
+</section>
+<section id="research-purpose" class="level2">
+<h2 class="anchored" data-anchor-id="research-purpose">Research Purpose</h2>
+<p>The primary purpose of this research is to explore, analyze, and unravel the intricate dynamics that govern the adoption and diffusion of Electric Vehicles (EVs) in the global automotive landscape. Through a meticulous, data-driven approach, the investigation seeks to examine the varied aspects that influence and are influenced by the proliferation of EVs, encompassing technological, economic, environmental, and socio-political dimensions.</p>
+<p>The research intends to:</p>
+<p>Analyze Market Dynamics: To scrutinize the trends, patterns, and disparities in EV adoption across diverse geographical locations and market segments, providing insights into prevailing and emerging market trajectories.</p>
+<p>Examine Technological Developments: To investigate the role and impact of technological advancements, especially focusing on battery technology and charging infrastructure, on the viability and attractiveness of EVs to potential consumers.</p>
+<p>Evaluate Policy Efficacy: To assess the effectiveness and implications of varied policy instruments, from incentives to regulations, implemented by different nations in bolstering EV adoption and development.</p>
+<p>Assess Environmental Impacts: To quantitatively and qualitatively evaluate the environmental repercussions of transitioning to EVs, considering the various energy mixes utilized for electricity generation across different regions.</p>
+<p>Explore Socio-economic Implications: To delve into the economic and social ramifications emanating from the shift towards EVs, including aspects related to employment, industry transformations, and socio-economic disparities in access and utilization of EVs.</p>
+<p>Understand Consumer Behavior: To decipher the underlying factors that shape consumer preferences, perceptions, and apprehensions regarding EVs, and how these have evolved amidst technological advancements and market developments.</p>
+<p>Forecast Future Scenarios: To leverage existing data and trends to project potential future scenarios in the EV domain, identifying plausible trajectories and pivotal influencing factors in the medium to long-term perspective.</p>
+<p>By orchestrating a comprehensive exploration across these domains, the research aims to furnish stakeholders, ranging from policymakers, industry players, to academia, with substantive insights and data-driven narratives that can inform decision-making, strategy formulation, and policy design in the context of electric mobility. Moreover, it aspires to contribute to the scholarly discourse, enriching the existing body of knowledge pertaining to EVs, and potentially illuminating pathways towards a sustainable automotive future.</p>
+</section>
+<section id="research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
+<ol type="1">
+<li><p>Adoption Rate Analysis Question: How do demographic factors (such as age, income level, and geographical location) influence the adoption rate of EVs?</p></li>
+<li><p>Market Penetration and Segmentation Question: How does the penetration of EVs differ across various market segments (e.g., luxury vehicles, SUVs, compact cars), and what factors influence these variations?</p></li>
+<li><p>Charging Infrastructure Distribution Question: How does the availability and distribution of charging infrastructure correlate with the prevalence and use of EVs in different regions?</p></li>
+<li><p>Environmental Impact Assessment Question: How significant is the impact of EV adoption on reducing carbon emissions in different regions, considering the energy mix used in electricity generation?</p></li>
+<li><p>Economic Impact Question: What are the economic impacts (such as job creation or loss, and changes in tax revenues) associated with the growth of the EV industry?</p></li>
+<li><p>Consumer Behavior and Preferences Question: How do consumer preferences and behaviors regarding EVs evolve over time, and what factors (e.g., fuel prices, EV technology advancements) are driving these changes?</p></li>
+<li><p>Policy Effectiveness Question: How effective are various government policies and incentives (such as subsidies, tax breaks, and EV infrastructure investment) in promoting EV adoption?</p></li>
+<li><p>Technology Development Question: How has the development and enhancement of EV technologies (like battery storage, charging speed, and vehicle range) influenced the market and consumer choice?</p></li>
+<li><p>Impact on Traditional Automotive Industry Question: How is the rise of EVs affecting the traditional automotive industry in terms of production, market share, and employment?</p></li>
+<li><p>Future Projections Question: Based on current trends, what are the plausible future scenarios for EVs regarding market size, technology development, and environmental impact in the next decade?</p></li>
+</ol>
+</section>
+<section id="significance-of-the-study" class="level1">
+<h1>Significance of the Study</h1>
+</section>
+<section id="expected-outcomes" class="level1">
+<h1>Expected Outcomes</h1>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

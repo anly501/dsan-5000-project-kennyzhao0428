@@ -5,12 +5,36 @@ website:
   title: "DSAN-5000: Project"
   navbar:
     left:
+      - href: Data/Data.qmd
+        text: Data
+      - href: Data/APIData.ipynb
+        text: APIData
+      - href: Code/Code.qmd
+        text: Code
+      - href: aboutme/aboutme.qmd
+        text: About me
       - href: index.qmd
         text: Home
-      - href: clustering/clustering.qmd
-        text: Clustering
+      - href: Data Gathering/Data Gathering.qmd
+        text: Data Gathering
+      - href: Data Cleaning/Data Cleaning.qmd
+        text: Data Cleaning
       - href: eda/eda.ipynb
         text: Data Exploration
+      - href: clustering/clustering.qmd
+        text: Clustering
+      - href: Dimensionality reduction/Dimentionality.qmd
+        text: Dimensionality reduction
+      - href: Dicision Trees/Classification.qmd
+        text: Classification
+      - href: Dicision Trees/Regression.qmd
+        text: Regression
+      - href: ARM/ARM.qmd
+        text: ARM
+      - href: Conclusions/Conclusion.qmd
+        text: Conclusion
+
+
 format:
   html:
     theme: cosmo
