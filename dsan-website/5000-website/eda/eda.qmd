@@ -1,0 +1,127 @@
+---
+title: "EDA"
+---
+
+# I made statistics on the number of electric cars and hybrid electric cars purchased around the world from 2010 to 2022. The following is a specific analysis.
+
+```{r}
+df=read.csv("/Users/kenny/Desktop/dsan-5000-project-kennyzhao0428/data/01-modified-data/EVsalesHistori.csv")
+# Trend Analysis: Yearly EV Sales and Stock
+library(ggplot2)
+
+# Total sales
+ev_sales_trend <- ggplot(df[df$parameter == "EV sales", ], aes(x = year, y = value, group = powertrain, color = powertrain)) +
+  geom_line() +
+  labs(title = "EV Sales Trend Over Years", x = "Year", y = "Sales Volume")
+
+# Total stock
+ev_stock_trend <- ggplot(df[df$parameter == "EV stock", ], aes(x = year, y = value, group = powertrain, color = powertrain)) +
+  geom_line() +
+  labs(title = "EV Stock Trend Over Years", x = "Year", y = "Stock Volume")
+
+# Print the plots
+print(ev_sales_trend)
+print(ev_stock_trend)
+```
+
+# The two charts above reflect the significant increase in the number of trams purchased since 2010, and also reflect the increasing acceptance of trams. Especially after 2019, the number of people buying trams has increased several times.
+
+```{r}
+# Proportion Analysis: Yearly EV Sales Share
+ev_sales_share <- ggplot(df[df$parameter == "EV sales share", ], aes(x = year, y = value, fill = powertrain)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "EV Sales Share Over Years", x = "Year", y = "Sales Share (%)")
+
+# Print the plot
+print(ev_sales_share)
+```
+
+
+# The following is an analysis of the correlation of this set of data。
+
+```{r}
+# Correlation Analysis: Stock vs. Sales
+# You first need to create a new data frame that only has the sales and stock data
+sales_data <- df[df$parameter == "EV sales", c("year", "powertrain", "value")]
+stock_data <- df[df$parameter == "EV stock", c("year", "powertrain", "value")]
+
+# Rename columns for merging
+colnames(sales_data)[3] <- "sales"
+colnames(stock_data)[3] <- "stock"
+
+# Merge the data frames
+merged_data <- merge(sales_data, stock_data, by = c("year", "powertrain"))
+
+# Calculate correlation
+cor_matrix <- cor(merged_data[, c("sales", "stock")], use = "complete.obs")
+
+# Display the correlation matrix
+print(cor_matrix)
+```
+
+# We can see that this set of data is still very good. and we can also do the outlier as follow:
+
+```{r}
+Q1 <- quantile(df$value, 0.25)
+Q3 <- quantile(df$value, 0.75)
+IQR <- Q3 - Q1
+# Define the bounds for outliers
+lower_bound <- Q1 - 1.5 * IQR
+upper_bound <- Q3 + 1.5 * IQR
+# Identify the outliers
+outliers <- df$value < lower_bound | df$value > upper_bound
+# Filter the outlier data
+outliers_data <- df[outliers, ]
+# Visualize the outliers
+boxplot(df$value, main="Boxplot for 'value' Column")
+```
+
+
+
+# For the data about：Men and women of different age groups consider the cost of purchasing electric vehicles, the proportion of electric vehicles purchased, and the concerns that influence their purchase of electric vehicles.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(corrplot)
+
+df = read.csv("/Users/kenny/Desktop/dsan-5000-project-kennyzhao0428/data/01-modified-data/clean26.csv")
+str(df)
+
+# delete “Total males” and “Total females”
+df_filtered = df[!df$Sex.Age.group %in% c("Total males", "Total females"), ]
+
+# mean, median and sd
+
+df_stats = df_filtered %>%
+  summarise(
+    Mean_Cost = mean(Cost, na.rm = TRUE),
+    Median_Cost = median(Cost, na.rm = TRUE),
+    SD_Cost = sd(Cost, na.rm = TRUE)
+  )
+
+print(df_stats)
+
+# visulize
+ggplot(df_filtered, aes(x = Cost)) + 
+  geom_histogram(binwidth = 5, fill = "blue", color = "black") +
+  theme_minimal() +
+  labs(title = "Cost Distribution", x = "Cost", y = "Frequency")
+
+# boxplot
+ggplot(df_filtered, aes(x = `Sex.Age.group`, y = Cost)) + 
+  geom_boxplot() + 
+  theme_minimal() +
+  labs(title = "Cost by Age Group", x = "Age Group", y = "Cost")
+
+# Correlation Analysis
+grouped_data <- df_filtered %>%
+  group_by(`Sex.Age.group`) %>%
+  summarise(Mean_Cost = mean(Cost, na.rm = TRUE))
+
+print(grouped_data)
+
+# outlier
+boxplot_stats <- boxplot(Cost ~ `Sex.Age.group`, data = df_filtered, outline = TRUE, main = "Cost by Age Group")
+```
+

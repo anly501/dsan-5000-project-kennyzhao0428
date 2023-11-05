@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DSAN-5000: Project - Data Exploration</title>
+<title>DSAN-5000: Project - EDA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,16 +115,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../Data/Data.html" rel="" target="">
+ <span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Data/APIData.html" rel="" target="">
+ <span class="menu-text">APIData</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Code/Code.html" rel="" target="">
+ <span class="menu-text">Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../aboutme/aboutme.html" rel="" target="">
+ <span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Data Gathering/Data Gathering.html" rel="" target="">
+ <span class="menu-text">Data Gathering</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Data Cleaning/Data Cleaning.html" rel="" target="">
+ <span class="menu-text">Data Cleaning</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../eda/eda.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Data Exploration</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Naïve Bayes/N_Bayes.html" rel="" target="">
+ <span class="menu-text">Naïve Bayes</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../clustering/clustering.html" rel="" target="">
  <span class="menu-text">Clustering</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../eda/eda.html" rel="" target="" aria-current="page">
- <span class="menu-text">Data Exploration</span></a>
+    <a class="nav-link" href="../Dimensionality reduction/Dimentionality.qmd" rel="" target="">
+ <span class="menu-text">Dimensionality reduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Dicision Trees/Classification.qmd" rel="" target="">
+ <span class="menu-text">Classification</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Dicision Trees/Regression.qmd" rel="" target="">
+ <span class="menu-text">Regression</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../ARM/ARM.html" rel="" target="">
+ <span class="menu-text">ARM</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Conclusions/Conclusion.qmd" rel="" target="">
+ <span class="menu-text">Conclusion</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -142,8 +190,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quick-look-at-the-data" id="toc-quick-look-at-the-data" class="nav-link active" data-scroll-target="#quick-look-at-the-data">Quick look at the data</a></li>
-  <li><a href="#basic-visualization" id="toc-basic-visualization" class="nav-link" data-scroll-target="#basic-visualization">Basic visualization</a></li>
+  <li><a href="#i-made-statistics-on-the-number-of-electric-cars-and-hybrid-electric-cars-purchased-around-the-world-from-2010-to-2022.-the-following-is-a-specific-analysis." id="toc-i-made-statistics-on-the-number-of-electric-cars-and-hybrid-electric-cars-purchased-around-the-world-from-2010-to-2022.-the-following-is-a-specific-analysis." class="nav-link active" data-scroll-target="#i-made-statistics-on-the-number-of-electric-cars-and-hybrid-electric-cars-purchased-around-the-world-from-2010-to-2022.-the-following-is-a-specific-analysis.">I made statistics on the number of electric cars and hybrid electric cars purchased around the world from 2010 to 2022. The following is a specific analysis.</a></li>
+  <li><a href="#the-two-charts-above-reflect-the-significant-increase-in-the-number-of-trams-purchased-since-2010-and-also-reflect-the-increasing-acceptance-of-trams.-especially-after-2019-the-number-of-people-buying-trams-has-increased-several-times." id="toc-the-two-charts-above-reflect-the-significant-increase-in-the-number-of-trams-purchased-since-2010-and-also-reflect-the-increasing-acceptance-of-trams.-especially-after-2019-the-number-of-people-buying-trams-has-increased-several-times." class="nav-link" data-scroll-target="#the-two-charts-above-reflect-the-significant-increase-in-the-number-of-trams-purchased-since-2010-and-also-reflect-the-increasing-acceptance-of-trams.-especially-after-2019-the-number-of-people-buying-trams-has-increased-several-times.">The two charts above reflect the significant increase in the number of trams purchased since 2010, and also reflect the increasing acceptance of trams. Especially after 2019, the number of people buying trams has increased several times.</a></li>
+  <li><a href="#the-following-is-an-analysis-of-the-correlation-of-this-set-of-data" id="toc-the-following-is-an-analysis-of-the-correlation-of-this-set-of-data" class="nav-link" data-scroll-target="#the-following-is-an-analysis-of-the-correlation-of-this-set-of-data">The following is an analysis of the correlation of this set of data。</a></li>
+  <li><a href="#we-can-see-that-this-set-of-data-is-still-very-good.-and-we-can-also-do-the-outlier-as-follow" id="toc-we-can-see-that-this-set-of-data-is-still-very-good.-and-we-can-also-do-the-outlier-as-follow" class="nav-link" data-scroll-target="#we-can-see-that-this-set-of-data-is-still-very-good.-and-we-can-also-do-the-outlier-as-follow">We can see that this set of data is still very good. and we can also do the outlier as follow:</a></li>
+  <li><a href="#for-the-data-aboutmen-and-women-of-different-age-groups-consider-the-cost-of-purchasing-electric-vehicles-the-proportion-of-electric-vehicles-purchased-and-the-concerns-that-influence-their-purchase-of-electric-vehicles." id="toc-for-the-data-aboutmen-and-women-of-different-age-groups-consider-the-cost-of-purchasing-electric-vehicles-the-proportion-of-electric-vehicles-purchased-and-the-concerns-that-influence-their-purchase-of-electric-vehicles." class="nav-link" data-scroll-target="#for-the-data-aboutmen-and-women-of-different-age-groups-consider-the-cost-of-purchasing-electric-vehicles-the-proportion-of-electric-vehicles-purchased-and-the-concerns-that-influence-their-purchase-of-electric-vehicles.">For the data about：Men and women of different age groups consider the cost of purchasing electric vehicles, the proportion of electric vehicles purchased, and the concerns that influence their purchase of electric vehicles.</a></li>
   </ul>
 </nav>
     </div>
@@ -152,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Exploration</h1>
+<h1 class="title">EDA</h1>
 </div>
 
 
@@ -167,52 +218,191 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Build out your website tab for exploratory data analysis</p>
-<section id="quick-look-at-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="quick-look-at-the-data">Quick look at the data</h2>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import seaborn</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<section id="i-made-statistics-on-the-number-of-electric-cars-and-hybrid-electric-cars-purchased-around-the-world-from-2010-to-2022.-the-following-is-a-specific-analysis." class="level1">
+<h1>I made statistics on the number of electric cars and hybrid electric cars purchased around the world from 2010 to 2022. The following is a specific analysis.</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span><span class="fu">read.csv</span>(<span class="st">"/Users/kenny/Desktop/dsan-5000-project-kennyzhao0428/data/01-modified-data/EVsalesHistori.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Trend Analysis: Yearly EV Sales and Stock</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the default theme</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>, palette<span class="op">=</span><span class="st">"pastel"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load an example dataset</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     total_bill   tip     sex smoker   day    time  size
-0         16.99  1.01  Female     No   Sun  Dinner     2
-1         10.34  1.66    Male     No   Sun  Dinner     3
-2         21.01  3.50    Male     No   Sun  Dinner     3
-3         23.68  3.31    Male     No   Sun  Dinner     2
-4         24.59  3.61  Female     No   Sun  Dinner     4
-..          ...   ...     ...    ...   ...     ...   ...
-239       29.03  5.92    Male     No   Sat  Dinner     3
-240       27.18  2.00  Female    Yes   Sat  Dinner     2
-241       22.67  2.00    Male    Yes   Sat  Dinner     2
-242       17.82  1.75    Male     No   Sat  Dinner     2
-243       18.78  3.00  Female     No  Thur  Dinner     2
-
-[244 rows x 7 columns]</code></pre>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Total sales</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ev_sales_trend <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df[df<span class="sc">$</span>parameter <span class="sc">==</span> <span class="st">"EV sales"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">group =</span> powertrain, <span class="at">color =</span> powertrain)) <span class="sc">+</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"EV Sales Trend Over Years"</span>, <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Sales Volume"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Total stock</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ev_stock_trend <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df[df<span class="sc">$</span>parameter <span class="sc">==</span> <span class="st">"EV stock"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">group =</span> powertrain, <span class="at">color =</span> powertrain)) <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"EV Stock Trend Over Years"</span>, <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Stock Volume"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the plots</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ev_sales_trend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="eda_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ev_stock_trend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="eda_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="basic-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="basic-visualization">Basic visualization</h2>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a visualization</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sns.relplot(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>tips,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"total_bill"</span>, y<span class="op">=</span><span class="st">"tip"</span>, col<span class="op">=</span><span class="st">"time"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">"smoker"</span>, style<span class="op">=</span><span class="st">"smoker"</span>, size<span class="op">=</span><span class="st">"size"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="eda_files/figure-html/cell-3-output-1.svg" class="img-fluid"></p>
+<section id="the-two-charts-above-reflect-the-significant-increase-in-the-number-of-trams-purchased-since-2010-and-also-reflect-the-increasing-acceptance-of-trams.-especially-after-2019-the-number-of-people-buying-trams-has-increased-several-times." class="level1">
+<h1>The two charts above reflect the significant increase in the number of trams purchased since 2010, and also reflect the increasing acceptance of trams. Especially after 2019, the number of people buying trams has increased several times.</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion Analysis: Yearly EV Sales Share</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ev_sales_share <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df[df<span class="sc">$</span>parameter <span class="sc">==</span> <span class="st">"EV sales share"</span>, ], <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">fill =</span> powertrain)) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"EV Sales Share Over Years"</span>, <span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Sales Share (%)"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the plot</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ev_sales_share)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="eda_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="the-following-is-an-analysis-of-the-correlation-of-this-set-of-data" class="level1">
+<h1>The following is an analysis of the correlation of this set of data。</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation Analysis: Stock vs. Sales</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># You first need to create a new data frame that only has the sales and stock data</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sales_data <span class="ot">&lt;-</span> df[df<span class="sc">$</span>parameter <span class="sc">==</span> <span class="st">"EV sales"</span>, <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"powertrain"</span>, <span class="st">"value"</span>)]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>stock_data <span class="ot">&lt;-</span> df[df<span class="sc">$</span>parameter <span class="sc">==</span> <span class="st">"EV stock"</span>, <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"powertrain"</span>, <span class="st">"value"</span>)]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns for merging</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sales_data)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"sales"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(stock_data)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"stock"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the data frames</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> <span class="fu">merge</span>(sales_data, stock_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"powertrain"</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(merged_data[, <span class="fu">c</span>(<span class="st">"sales"</span>, <span class="st">"stock"</span>)], <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the correlation matrix</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cor_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           sales      stock
+sales 1.00000000 0.07609434
+stock 0.07609434 1.00000000</code></pre>
+</div>
+</div>
+</section>
+<section id="we-can-see-that-this-set-of-data-is-still-very-good.-and-we-can-also-do-the-outlier-as-follow" class="level1">
+<h1>We can see that this set of data is still very good. and we can also do the outlier as follow:</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df<span class="sc">$</span>value, <span class="fl">0.25</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(df<span class="sc">$</span>value, <span class="fl">0.75</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>IQR <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the bounds for outliers</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>lower_bound <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>upper_bound <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify the outliers</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>outliers <span class="ot">&lt;-</span> df<span class="sc">$</span>value <span class="sc">&lt;</span> lower_bound <span class="sc">|</span> df<span class="sc">$</span>value <span class="sc">&gt;</span> upper_bound</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the outlier data</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>outliers_data <span class="ot">&lt;-</span> df[outliers, ]</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the outliers</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(df<span class="sc">$</span>value, <span class="at">main=</span><span class="st">"Boxplot for 'value' Column"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="eda_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="for-the-data-aboutmen-and-women-of-different-age-groups-consider-the-cost-of-purchasing-electric-vehicles-the-proportion-of-electric-vehicles-purchased-and-the-concerns-that-influence-their-purchase-of-electric-vehicles." class="level1">
+<h1>For the data about：Men and women of different age groups consider the cost of purchasing electric vehicles, the proportion of electric vehicles purchased, and the concerns that influence their purchase of electric vehicles.</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+载入程辑包：'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>corrplot 0.92 loaded</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"/Users/kenny/Desktop/dsan-5000-project-kennyzhao0428/data/01-modified-data/clean26.csv"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   13 obs. of  13 variables:
+ $ Sex.Age.group                         : chr  "Total" "18-29" "30-44" "45-59" ...
+ $ Cost                                  : num  63.3 56.6 68.4 61.2 69.2 60 63.7 60.3 67.5 67.8 ...
+ $ Inadequete.public.charging.facilities : num  29.3 18.4 35.1 35.7 34.8 23.9 31 20.2 29.4 36.2 ...
+ $ No.limited.access.to.home.charging    : num  21.1 16.2 29 21.6 23.8 18.1 22.8 11.8 26.1 24.1 ...
+ $ Limited.range.available               : num  19.3 6.6 26.7 25.3 19.9 12.6 20 10 24.7 23.4 ...
+ $ Don.t.drive..own.a.car                : num  4.4 8.2 2.3 1.3 2.8 4 5.8 12.1 2 1.4 ...
+ $ Resale.value.of.EV                    : num  4 4.7 5.6 5.3 4.4 3.4 3.4 1.9 2.7 4.6 ...
+ $ Reliability..safety.concerns          : num  5.4 1.2 6.3 8.4 5.6 5.1 5.4 3.4 3.8 5.3 ...
+ $ No.need..don.t.know.enough            : num  4.5 0 4.3 3.7 6.5 10.5 4.6 1.2 2.8 3 ...
+ $ Not.changing.for.a.while              : num  1.9 3.6 1.1 1.4 0.8 1.4 1.6 7.2 1 1.3 ...
+ $ Not.available.at.time.of.last.purchase: num  1.2 2.1 0 0.5 0.7 2.4 1.7 2.2 0.6 1.6 ...
+ $ Other                                 : num  9.8 10.8 5 8 6 9.1 9 8.5 4.8 9.2 ...
+ $ Gender                                : chr  NA "Male" "Male" "Male" ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delete “Total males” and “Total females”</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">=</span> df[<span class="sc">!</span>df<span class="sc">$</span>Sex.Age.group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Total males"</span>, <span class="st">"Total females"</span>), ]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mean, median and sd</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>df_stats <span class="ot">=</span> df_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Cost =</span> <span class="fu">mean</span>(Cost, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Median_Cost =</span> <span class="fu">median</span>(Cost, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Cost =</span> <span class="fu">sd</span>(Cost, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Mean_Cost Median_Cost  SD_Cost
+1      61.6        61.2 7.534985</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visulize</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_filtered, <span class="fu">aes</span>(<span class="at">x =</span> Cost)) <span class="sc">+</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cost Distribution"</span>, <span class="at">x =</span> <span class="st">"Cost"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="eda_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_filtered, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Sex.Age.group</span><span class="st">`</span>, <span class="at">y =</span> Cost)) <span class="sc">+</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cost by Age Group"</span>, <span class="at">x =</span> <span class="st">"Age Group"</span>, <span class="at">y =</span> <span class="st">"Cost"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="eda_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation Analysis</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>grouped_data <span class="ot">&lt;-</span> df_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Sex.Age.group</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_Cost =</span> <span class="fu">mean</span>(Cost, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grouped_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  Sex.Age.group Mean_Cost
+  &lt;chr&gt;             &lt;dbl&gt;
+1 18-29              58.4
+2 30-44              68.0
+3 45-59              64.5
+4 60-74              64.9
+5 75+                51.4
+6 Total              63.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># outlier</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>boxplot_stats <span class="ot">&lt;-</span> <span class="fu">boxplot</span>(Cost <span class="sc">~</span> <span class="st">`</span><span class="at">Sex.Age.group</span><span class="st">`</span>, <span class="at">data =</span> df_filtered, <span class="at">outline =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">"Cost by Age Group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="eda_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 

@@ -4,6 +4,7 @@ title: "DATA"
 
 [can find the data here](https://www.cso.ie/en/releasesandpublications/ep/p-smt/sustainablemobilityandtransport2021/electricvehicles/)
 
+[can find the EV sales data here](https://www.iea.org/data-and-statistics/data-tools/global-ev-data-explorer)
 # we can get these data :
 
 ![original_data_82](image/82.png){width=400}
