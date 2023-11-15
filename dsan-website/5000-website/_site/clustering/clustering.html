@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -85,8 +119,16 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../Data/APIData.html" rel="" target="">
+ <span class="menu-text">APIData</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../Code/Code.html" rel="" target="">
  <span class="menu-text">Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../aboutme/aboutme.html" rel="" target="">
+ <span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../index.html" rel="" target="">
@@ -105,11 +147,15 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Data Exploration</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../Naïve Bayes/N_Bayes.html" rel="" target="">
+ <span class="menu-text">Naïve Bayes</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="../clustering/clustering.html" rel="" target="" aria-current="page">
  <span class="menu-text">Clustering</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Dimensionality reduction/Dimentionality.qmd" rel="" target="">
+    <a class="nav-link" href="../Dimensionality reduction/Dimentionality.ipynb" rel="" target="">
  <span class="menu-text">Dimensionality reduction</span></a>
   </li>  
   <li class="nav-item">
@@ -140,7 +186,18 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#theory" id="toc-theory" class="nav-link active" data-scroll-target="#theory">Theory:</a></li>
+  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">K-Means Clustering:</a></li>
+  <li><a href="#dbscan-density-based-spatial-clustering-of-applications-with-noise" id="toc-dbscan-density-based-spatial-clustering-of-applications-with-noise" class="nav-link" data-scroll-target="#dbscan-density-based-spatial-clustering-of-applications-with-noise">DBSCAN (Density-Based Spatial Clustering of Applications with Noise):</a></li>
+  <li><a href="#hierarchical-clustering" id="toc-hierarchical-clustering" class="nav-link" data-scroll-target="#hierarchical-clustering">Hierarchical Clustering:</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#conclusions-drawn-from-k-means-cluster-analysis-include" id="toc-conclusions-drawn-from-k-means-cluster-analysis-include" class="nav-link" data-scroll-target="#conclusions-drawn-from-k-means-cluster-analysis-include">Conclusions drawn from K-means cluster analysis include:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -162,9 +219,183 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Build out your website tab for “clustering”</p>
+<section id="theory" class="level2">
+<h2 class="anchored" data-anchor-id="theory">Theory:</h2>
+</section>
+<section id="k-means-clustering" class="level1">
+<h1>K-Means Clustering:</h1>
+<p><strong>Overview</strong>: Describe K-means as a method that partitions data into K distinct, non-overlapping subgroups. It does this by minimizing the distance between data points and the centroid (the center point) of each cluster.</p>
+<p>the K-Means clustering algorithm has consistently been an invaluable tool. The beauty of this algorithm lies in its simplicity and efficacy in breaking down complex datasets into comprehensible and analyzable segments.</p>
+<p>Imagine you’re faced with a scatter of data points that seem random at first glance. K-Means acts like a seasoned conductor, swiftly identifying the inherent structure within these points and grouping them into meaningful clusters. The process is akin to solving a puzzle; initially, you might have little idea about the overall picture, but by progressively grouping similar pieces together, the complete image gradually becomes clear.</p>
+<p>The essence of K-Means lies in how it selects the appropriate cluster centers and determines the number of clusters. This selection process is somewhat like finding the best vantage point from which you can most clearly discern the overall layout of the data. Utilizing the Elbow Method to determine the number of clusters is a scientific and intuitive approach, helping us strike a balance between complexity and interpretability.</p>
+<p>Of course, I’m acutely aware of the limitations of K-Means in my practice. For instance, it is sensitive to outliers, and it requires us to preset the number of clusters. Despite these constraints, it remains a potent tool in many scenarios, especially when conducting a quick preliminary analysis of large-scale data.</p>
+</section>
+<section id="dbscan-density-based-spatial-clustering-of-applications-with-noise" class="level1">
+<h1>DBSCAN (Density-Based Spatial Clustering of Applications with Noise):</h1>
+<p><strong>Overview</strong>: DBSCAN (Density-Based Spatial Clustering of Applications with Noise) I’ve often turned to DBSCAN for its unique approach to clustering. Unlike many other algorithms, DBSCAN excels in discovering clusters with irregular shapes and sizes, which is often the case in real-world data.</p>
+<p>DBSCAN is brilliant at uncovering hidden structures in a seemingly chaotic environment. It doesn’t need to be told how many clusters to look for; instead, it discerns clusters based on the density of data points. This feature is particularly useful when you’re dealing with complex datasets where predefined assumptions don’t hold.</p>
+<p>The algorithm uses two parameters: Epsilon, which sets the neighborhood size, and MinPts, the minimum number of points required to form a dense region. I’ve always appreciated how DBSCAN can adeptly separate core points of high-density areas from the more isolated, noise-like points. This ability makes it especially valuable in tasks like anomaly detection or identifying areas of high concentration in spatial data.</p>
+</section>
+<section id="hierarchical-clustering" class="level1">
+<h1>Hierarchical Clustering:</h1>
+<p><strong>Overview</strong>: Hierarchical Clustering Unlike the ‘flat’ clustering of K-Means or DBSCAN, it creates a tree of clusters, offering a multi-level view of the data.</p>
+<p>This method is akin to building a family tree, where each data point starts as its own entity and gradually merges with others to form increasingly larger groups. What’s fascinating is how this process can be either bottom-up (agglomerative) or top-down (divisive), offering flexibility in how we approach the data.</p>
+<p>The absence of the need to predefine the number of clusters is another aspect I find quite liberating. It allows a more exploratory approach to understanding data structures. The dendrogram, a tree-like diagram used in hierarchical clustering, provides a visual representation of this hierarchy, making it easier to interpret and decide on the optimal cluster cut.</p>
+<p>I’ve found hierarchical clustering particularly useful in domains where the relationships between data points are as important as the groupings themselves, such as in genetics or when organizing complex libraries.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans, DBSCAN</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.cluster.hierarchy <span class="im">import</span> dendrogram, linkage</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/Users/kenny/Desktop/dsan-5000-project-kennyzhao0428/data/01-modified-data/clean26.csv'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Sex/Age group  Cost  Inadequete public charging facilities  \
+0           Total  63.3                                   29.3   
+1           18-29  56.6                                   18.4   
+2           30-44  68.4                                   35.1   
+3           45-59  61.2                                   35.7   
+4           60-74  69.2                                   34.8   
+5             75+  60.0                                   23.9   
+6     Total males  63.7                                   31.0   
+7           18-29  60.3                                   20.2   
+8           30-44  67.5                                   29.4   
+9           45-59  67.8                                   36.2   
+10          60-74  60.6                                   27.5   
+11            75+  42.7                                   14.4   
+12  Total females  62.9                                   27.8   
+
+    No/limited access to home charging  Limited range available  \
+0                                 21.1                     19.3   
+1                                 16.2                      6.6   
+2                                 29.0                     26.7   
+3                                 21.6                     25.3   
+4                                 23.8                     19.9   
+5                                 18.1                     12.6   
+6                                 22.8                     20.0   
+7                                 11.8                     10.0   
+8                                 26.1                     24.7   
+9                                 24.1                     23.4   
+10                                15.3                     16.0   
+11                                 7.7                      8.1   
+12                                19.4                     18.6   
+
+    Don't drive/ own a car  Resale value of EV  Reliability/ safety concerns  \
+0                      4.4                 4.0                           5.4   
+1                      8.2                 4.7                           1.2   
+2                      2.3                 5.6                           6.3   
+3                      1.3                 5.3                           8.4   
+4                      2.8                 4.4                           5.6   
+5                      4.0                 3.4                           5.1   
+6                      5.8                 3.4                           5.4   
+7                     12.1                 1.9                           3.4   
+8                      2.0                 2.7                           3.8   
+9                      1.4                 4.6                           5.3   
+10                     6.4                 2.9                           5.0   
+11                    12.4                 2.3                           4.6   
+12                     4.3                 5.4                           3.4   
+
+    No need/ don't know enough  Not changing for a while  \
+0                          4.5                       1.9   
+1                          0.0                       3.6   
+2                          4.3                       1.1   
+3                          3.7                       1.4   
+4                          6.5                       0.8   
+5                         10.5                       1.4   
+6                          4.6                       1.6   
+7                          1.2                       7.2   
+8                          2.8                       1.0   
+9                          3.0                       1.3   
+10                         9.6                       1.0   
+11                        11.0                       0.3   
+12                         5.8                       2.2   
+
+    Not available at time of last purchase  Other  Gender  
+0                                      1.2    9.8     NaN  
+1                                      2.1   10.8    Male  
+2                                      0.0    5.0    Male  
+3                                      0.5    8.0    Male  
+4                                      0.7    6.0    Male  
+5                                      2.4    9.1    Male  
+6                                      1.7    9.0    Male  
+7                                      2.2    8.5  Female  
+8                                      0.6    4.8  Female  
+9                                      1.6    9.2  Female  
+10                                     2.5    9.3  Female  
+11                                     1.1   10.2  Female  
+12                                     2.1   11.1  Female  </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/Users/kenny/Desktop/dsan-5000-project-kennyzhao0428/data/01-modified-data/clean26.csv'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> OneHotEncoder(sparse<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>encoded_features <span class="op">=</span> pd.DataFrame(encoder.fit_transform(df[[<span class="st">'Sex/Age group'</span>, <span class="st">'Gender'</span>]]))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>encoded_features.columns <span class="op">=</span> encoder.get_feature_names_out([<span class="st">'Sex/Age group'</span>, <span class="st">'Gender'</span>])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop([<span class="st">'Sex/Age group'</span>, <span class="st">'Gender'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([df, encoded_features], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># stand</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">'float64'</span>, <span class="st">'int64'</span>]).columns</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>df[numeric_features] <span class="op">=</span> scaler.fit_transform(df[numeric_features])</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># kmean</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>wcss <span class="op">=</span> []</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>i, init<span class="op">=</span><span class="st">'k-means++'</span>, max_iter<span class="op">=</span><span class="dv">300</span>, n_init<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(df)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    wcss.append(kmeans.inertia_)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>), wcss)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Elbow Method'</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of clusters'</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'WCSS'</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/kenny/anaconda3/lib/python3.11/site-packages/sklearn/preprocessing/_encoders.py:972: FutureWarning: `sparse` was renamed to `sparse_output` in version 1.2 and will be removed in 1.4. `sparse_output` is ignored unless you leave `sparse` to its default value.
+  warnings.warn(</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="clustering_files/figure-html/cell-3-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<p>The elbow method chart you’ve provided is a visual tool used to determine the optimal number of clusters for K-means clustering analysis. The chart shows a plot of the Within-Cluster Sum of Squares (WCSS) against the number of clusters. WCSS is a measure of clustering effectiveness that sums the squared distances of each point from its cluster center. Ideally, as the number of clusters increases, the WCSS should decrease because points are more closely grouped around their centers.</p>
+<p>From your chart, there is a noticeable decrease in WCSS as the number of clusters increases, but the rate of decrease slows down, forming an “elbow.” This elbow usually suggests a good choice for the number of clusters because it represents a balance between performance (tighter clusters) and complexity (more clusters).</p>
+<p>In your chart, the elbow appears to be around 4 or 5 clusters. This implies that for the electric vehicle concerns data you mentioned earlier, choosing 4 or 5 clusters might be optimal, offering a balance between performance and complexity.</p>
+<ul>
+<li>The analysis to add to the conclusion section might be:</li>
+</ul>
+<p>The K-means clustering analysis suggests that the data indicates the presence of 4 or 5 distinct patterns of concerns related to age, gender, and specific apprehensions about electric vehicles.</p>
+<p>This finding underscores the importance of considering different market segments in electric vehicle promotion strategies to address potential consumers’ concerns more precisely.</p>
+<p>Furthermore, the elbow method analysis also suggests that while further segmentation of the market according to data is possible, over-segmentation may not yield additional insights. Therefore, focusing on four to five primary groups would be an effective and efficient strategy.</p>
+<p>This table is about people’s concerns about certain aspects of electric vehicles. Columns include different age and gender groups, cost, dissatisfaction with public charging facilities, lack of charging at home, limitations of EV range, perceived EV maintenance costs, and other issues.</p>
+</section>
+<section id="conclusions-drawn-from-k-means-cluster-analysis-include" class="level1">
+<h1>Conclusions drawn from K-means cluster analysis include:</h1>
+<p>Distribution of concerns among different groups: Different age and gender groups have different concerns about electric vehicles. For example, young people may be less concerned about the limitations of battery life, while middle-aged groups may be more concerned about charging facilities and battery life.</p>
+<ul>
+<li><p>Key concerns: Cost and charging facilities are likely to be major barriers for most people when choosing an electric vehicle, especially among older age groups.</p></li>
+<li><p>Gender differences: Men and women may have differences in their concerns about electric vehicles. For example, the problem of being unable to charge at home may be higher among men.</p></li>
+</ul>
+<p>Conclusion, highlights these key findings and explores how they impact practical situations. For example, insufficient public charging facilities are a common problem affecting all age groups and may suggest that policymakers and automakers need to increase their efforts in building more charging stations. The problem of range limitations is less pronounced among younger people, perhaps because their daily driving distances are shorter, or they are more willing to accept the limitations of new technologies.</p>
+<p>In addition, these conclusions also have a direct impact on marketing strategies, which may prompt electric vehicle manufacturers to develop different marketing strategies for different gender and age groups to address the specific concerns of potential buyers.</p>
+<p>This non-technical summary is intended to provide the general reader with insights into the current state of the electric vehicle market and its future trends. It could also help spread the word about the benefits of electric vehicles while pointing to barriers that currently stand in the way of wider adoption.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

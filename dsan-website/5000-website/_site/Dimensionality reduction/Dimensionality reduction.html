@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DSAN-5000: Project – dimensionality-reduction</title>
+<title>DSAN-5000: Project - Project Report (Including PCA Results and Analysis)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -85,8 +119,16 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../Data/APIData.html" rel="" target="">
+ <span class="menu-text">APIData</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../Code/Code.html" rel="" target="">
  <span class="menu-text">Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../aboutme/aboutme.html" rel="" target="">
+ <span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../index.html" rel="" target="">
@@ -105,11 +147,15 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Data Exploration</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../Naïve Bayes/N_Bayes.html" rel="" target="">
+ <span class="menu-text">Naïve Bayes</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../clustering/clustering.html" rel="" target="">
  <span class="menu-text">Clustering</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Dimensionality reduction/Dimentionality.qmd" rel="" target="">
+    <a class="nav-link" href="../Dimensionality reduction/Dimentionality.ipynb" rel="" target="">
  <span class="menu-text">Dimensionality reduction</span></a>
   </li>  
   <li class="nav-item">
@@ -140,15 +186,211 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview-of-steps" id="toc-overview-of-steps" class="nav-link active" data-scroll-target="#overview-of-steps">Overview of Steps</a></li>
+  <li><a href="#pca-results-and-analysis" id="toc-pca-results-and-analysis" class="nav-link" data-scroll-target="#pca-results-and-analysis">PCA Results and Analysis</a></li>
+  <li><a href="#pca-results" id="toc-pca-results" class="nav-link" data-scroll-target="#pca-results">PCA Results:</a></li>
+  <li><a href="#pca-result" id="toc-pca-result" class="nav-link" data-scroll-target="#pca-result">PCA result</a></li>
+  <li><a href="#t-sne-results" id="toc-t-sne-results" class="nav-link" data-scroll-target="#t-sne-results">t-SNE Results</a></li>
+  <li><a href="#combined-analysis-and-insights" id="toc-combined-analysis-and-insights" class="nav-link" data-scroll-target="#combined-analysis-and-insights">Combined Analysis and Insights</a></li>
+  <li><a href="#comparison" id="toc-comparison" class="nav-link" data-scroll-target="#comparison">Comparison</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion:</a></li>
+  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions">Future Directions</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Project Report (Including PCA Results and Analysis)</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="overview-of-steps" class="level1">
+<h1>Overview of Steps</h1>
+<ol type="1">
+<li><p>Data Preprocessing: Standardized the selected dataset to make it suitable for PCA and t-SNE analysis.</p></li>
+<li><p>PCA Analysis: Applied PCA to reduce dimensions to two principal components and visualized the results.</p></li>
+<li><p>t-SNE Analysis: Implemented t-SNE to further explore the non-linear structures of the data, adjusted perplexity parameters for optimization, and visualized the results.</p></li>
+</ol>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your data</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/Users/kenny/Desktop/dsan-5000-project-kennyzhao0428/data/01-modified-data/clean26.csv'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df_numeric <span class="op">=</span> df.select_dtypes(include<span class="op">=</span>[np.number])</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># standardaize</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>df_scaled <span class="op">=</span> scaler.fit_transform(df_numeric)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_scaled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[ 0.21667245  0.19624834  0.23429134  0.23573263 -0.21878339  0.09154825
+   0.34296121 -0.21044587 -0.0044963  -0.30453688  0.64593885]
+ [-0.79253453 -1.42051852 -0.62838833 -1.73987436  0.84081461  0.6866119
+  -2.2222007  -1.57834402  0.98918623  0.84484426  1.15179457]
+ [ 0.98487478  1.0565463   1.62514222  1.38687372 -0.80435071  1.45169373
+   0.89263876 -0.27124134 -0.47211161 -1.83704507 -1.78216862]
+ [-0.09964615  1.14554264  0.32231987  1.16909027 -1.08319229  1.19666646
+   2.17521971 -0.45362776 -0.29675587 -1.1985     -0.26460146]
+ [ 1.10537711  1.01204813  0.70964544  0.3290684  -0.66492992  0.43158462
+   0.46511177  0.39750886 -0.64746735 -0.94308196 -1.2763129 ]
+ [-0.28039964 -0.60471873 -0.29387989 -0.80651672 -0.33032003 -0.4185063
+   0.15973536  1.61341833 -0.29675587  1.22797131  0.29183984]
+ [ 0.27692361  0.44840464  0.53358836  0.34462436  0.17159482 -0.4185063
+   0.34296121 -0.18004813 -0.17985204  0.3340082   0.24125427]
+ [-0.23521127 -1.15352949 -1.40303945 -1.2109717   1.92829678 -1.69364269
+  -0.87854446 -1.21357118  3.09345513  0.97255327 -0.01167359]
+ [ 0.84930966  0.21108106  1.11457671  1.0757545  -0.88800319 -1.01356995
+  -0.63424333 -0.72720739 -0.53056353 -1.07079098 -1.88333977]
+ [ 0.89449804  1.21970626  0.76246256  0.87352702 -1.05530814  0.60160281
+   0.28188592 -0.66641192 -0.35520778  0.20629918  0.34242541]
+ [-0.1900229  -0.07074068 -0.78683969 -0.27761407  0.33889977 -0.84355176
+   0.09866007  1.3398387  -0.53056353  1.35568032  0.39301098]
+ [-2.88626244 -2.01382746 -2.12487346 -1.50653495  2.01194925 -1.35360632
+  -0.14564106  1.76540701 -0.93972692 -0.4322459   0.84828114]
+ [ 0.15642129 -0.02624251 -0.06500569  0.12684091 -0.24666755  1.28167555
+  -0.87854446  0.18472471  0.17085944  0.84484426  1.30355129]]</code></pre>
+</div>
+</div>
+</section>
+<section id="pca-results-and-analysis" class="level1">
+<h1>PCA Results and Analysis</h1>
+</section>
+<section id="pca-results" class="level1">
+<h1>PCA Results:</h1>
+<p>The first principal component (PC1) explained about 56.02% of the variance in the data. The second principal component (PC2) explained about 17.59% of the variance. Principal Component Loadings: These loadings indicate the contribution of each original feature to the principal components. In this case, all features contributed to both principal components, albeit differently.</p>
+<p>Visualization: The PCA scatter plot showed the distribution of data points in the new space formed by the two principal components.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)  <span class="co"># number of pc</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>pca_result <span class="op">=</span> pca.fit_transform(df_scaled)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pca.explained_variance_ratio_)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># visul</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.scatter(pca_result[:, <span class="dv">0</span>], pca_result[:, <span class="dv">1</span>])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'PC1'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'PC2'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'PCA Result'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"PCA Components (Direction of the Principal Components):"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pca.components_)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># each</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Explained Variance Ratio (Per Principal Component):"</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pca.explained_variance_ratio_)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.56022745 0.17590308]
+PCA Components (Direction of the Principal Components):
+[[-0.32381985 -0.38160383 -0.37958675 -0.38537386  0.37014801 -0.24662653
+  -0.25656298  0.08016904  0.19020272  0.27616886  0.27274157]
+ [-0.31189866 -0.02686737 -0.14419338  0.02077494 -0.01035683 -0.09759981
+   0.36946729  0.64503021 -0.54818638 -0.13271508  0.0211992 ]]
+
+Explained Variance Ratio (Per Principal Component):
+[0.56022745 0.17590308]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Dimensionality reduction_files/figure-html/cell-3-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="pca-result" class="level1">
+<h1>PCA result</h1>
+<p>Here, you calculate two principal components, and the proportions of explained variance for these two components are:</p>
+<p>The first principal component (PC1) explains approximately 56.02% of the variance. The second principal component (PC2) explains approximately 17.59% of the variance.</p>
+<p>Therefore, among the two principal components, the first principal component (PC1) is the most dominant component because it explains the largest proportion of the variance. Following closely is the second principal component (PC2).</p>
+<p>In PCA, “main” usually refers to the component that contributes most to the variability (i.e., variance) of the data set. In most cases, we focus on those first few principal components that explain most of the variability in the data set. In your case, only two principal components are calculated, so both are considered principal, but the first one is more important because it explains more variance.</p>
+</section>
+<section id="t-sne-results" class="level1">
+<h1>t-SNE Results</h1>
+<p>t-SNE Results: t-SNE displayed the distribution of the data in a reduced two-dimensional space, highlighting potential patterns and clusters in the data.</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">5</span>, n_iter<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tsne_result <span class="op">=</span> tsne.fit_transform(df_scaled)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># tsne visual</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(tsne_result[:, <span class="dv">0</span>], tsne_result[:, <span class="dv">1</span>])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t-SNE 1'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'t-SNE 2'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'t-SNE Result'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-SNE Low Dimensional Coordinates:"</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tsne.embedding_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Dimensionality reduction_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>t-SNE Low Dimensional Coordinates:
+[[  1.7516272  14.599764 ]
+ [ 28.91664    -1.3949598]
+ [-61.713047   13.489791 ]
+ [ 10.525141   57.282585 ]
+ [-61.189743   -7.872035 ]
+ [ -7.4378967 -20.117245 ]
+ [ 16.797043  -28.856447 ]
+ [ 48.76994    -8.20627  ]
+ [ 42.00432   -59.512516 ]
+ [ 25.705366   32.046497 ]
+ [-15.215026  -37.46654  ]
+ [-30.574137  -14.487133 ]
+ [-16.266922   31.286976 ]]</code></pre>
+</div>
+</div>
+</section>
+<section id="combined-analysis-and-insights" class="level1">
+<h1>Combined Analysis and Insights</h1>
+<p>PCA Analysis: PCA revealed the most significant variability in the data. As a linear technique, it might not capture all complex, non-linear patterns.</p>
+<p>t-SNE Analysis: t-SNE provided a more detailed view of local structures and potential clusters, especially in terms of non-linear relationships in the data.</p>
+</section>
+<section id="comparison" class="level1">
+<h1>Comparison</h1>
+<p>PCA vs t-SNE:</p>
+<p>PCA provides a global view of the data in an intuitive way, helping to quickly grasp overall trends.</p>
+<p>t-SNE more powerfully reveals local structures and non-linear relationships, suitable for discovering potential data clusters.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion:</h1>
+<p>Combining PCA and t-SNE analyses allows us to understand the data from different perspectives, thus gaining more comprehensive insights. PCA is suitable for a quick overview of global trends, while t-SNE is applicable for exploring complex local patterns and clusters.</p>
+</section>
+<section id="future-directions" class="level1">
+<h1>Future Directions</h1>
+<p>These insights can guide more in-depth data analysis, such as clustering, anomaly detection, or predictive model building. Understanding these fundamental structures of the data is a crucial prerequisite for more complex analyses.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
