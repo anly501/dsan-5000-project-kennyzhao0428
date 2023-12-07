@@ -171,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">ARM</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Conclusions/Conclusion.qmd" rel="" target="">
+    <a class="nav-link" href="../Conclusions/Conclusions.html" rel="" target="">
  <span class="menu-text">Conclusion</span></a>
   </li>  
 </ul>
@@ -297,14 +297,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>           
 predictions BEV  EV PHEV
-       BEV   36   0   15
-       EV     4 343    1
-       PHEV 222   2  210</code></pre>
+       BEV   61   0   52
+       EV     6 328    4
+       PHEV 191   3  188</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>accuracy <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(confusionMatrix)) <span class="sc">/</span> <span class="fu">sum</span>(confusionMatrix)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(accuracy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7070828</code></pre>
+<pre><code>[1] 0.6926771</code></pre>
 </div>
 </div>
 </section>
@@ -353,12 +353,12 @@ predictions BEV  EV PHEV
 <div class="cell-output cell-output-stdout">
 <pre><code>                               Actual
 Predicted                       EV sales EV sales share EV stock EV stock share
-  EV sales                           254              0      234              0
-  EV sales share                       1             25        0              6
-  EV stock                             5              0       11              0
-  EV stock share                       0             97        1            120
+  EV sales                           266              0      226              0
+  EV sales share                       0             27        0              6
+  EV stock                            10              0       12              0
+  EV stock share                       0             92        2            133
   Electricity demand                   0              0        1              0
-  Oil displacement Mbd                 0              0        0              0
+  Oil displacement Mbd                 0              1        0              0
   Oil displacement, million lge        0              0        0              0
                                Actual
 Predicted                       Electricity demand Oil displacement Mbd
@@ -366,23 +366,23 @@ Predicted                       Electricity demand Oil displacement Mbd
   EV sales share                                 0                    0
   EV stock                                       0                    0
   EV stock share                                 0                    0
-  Electricity demand                            22                    0
-  Oil displacement Mbd                           0                   29
+  Electricity demand                            15                    0
+  Oil displacement Mbd                           1                   21
   Oil displacement, million lge                  0                    0
                                Actual
 Predicted                       Oil displacement, million lge
   EV sales                                                  0
   EV sales share                                            0
   EV stock                                                  0
-  EV stock share                                            5
+  EV stock share                                            1
   Electricity demand                                        0
   Oil displacement Mbd                                      0
-  Oil displacement, million lge                            22</code></pre>
+  Oil displacement, million lge                            19</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>accuracy <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(confusionMatrix)) <span class="sc">/</span> <span class="fu">sum</span>(confusionMatrix)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">'Accuracy:'</span>, accuracy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Accuracy: 0.579831932773109"</code></pre>
+<pre><code>[1] "Accuracy: 0.591836734693878"</code></pre>
 </div>
 </div>
 </section>

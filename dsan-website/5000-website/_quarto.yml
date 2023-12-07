@@ -33,7 +33,7 @@ website:
         text: Regression
       - href: ARM/ARM.qmd
         text: ARM
-      - href: Conclusions/Conclusion.qmd
+      - href: Conclusions/Conclusions.qmd
         text: Conclusion
 
 
