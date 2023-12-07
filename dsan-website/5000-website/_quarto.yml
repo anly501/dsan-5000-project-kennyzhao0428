@@ -25,7 +25,7 @@ website:
         text: Naïve Bayes
       - href: clustering/clustering.ipynb
         text: Clustering
-      - href: Dimensionality reduction/Dimentionality.ipynb
+      - href: D-reduction/Dimensionality reduction.ipynb
         text: Dimensionality reduction
       - href: Decision/Classification.qmd
         text: Classification

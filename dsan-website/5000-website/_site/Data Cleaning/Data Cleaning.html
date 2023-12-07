@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Clustering</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Dimensionality reduction/Dimentionality.ipynb" rel="" target="">
+    <a class="nav-link" href="../D-reduction/Dimensionality reduction.html" rel="" target="">
  <span class="menu-text">Dimensionality reduction</span></a>
   </li>  
   <li class="nav-item">
@@ -318,61 +318,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...3 = round(as.numeric(...3), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...4 = round(as.numeric(...4), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...5 = round(as.numeric(...5), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...6 = round(as.numeric(...6), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...7 = round(as.numeric(...7), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...8 = round(as.numeric(...8), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...9 = round(as.numeric(...9), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...10 = round(as.numeric(...10), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...11 = round(as.numeric(...11), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `...12 = round(as.numeric(...12), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Delete useless lines</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df[<span class="sc">-</span>(<span class="dv">17</span><span class="sc">:</span><span class="dv">20</span>), ]</span>
@@ -381,7 +381,8 @@ Caused by warning:
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)[<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(df)] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Sex/Age group"</span>,<span class="st">"Cost"</span>, <span class="st">"Inadequete public charging facilities"</span>, <span class="st">"No/limited access to home charging"</span>, <span class="st">"Limited range available"</span>, <span class="st">"Don't drive/ own a car"</span>, <span class="st">"Resale value of EV"</span>, <span class="st">"Reliability/ safety concerns"</span>, <span class="st">"No need/ don't know enough"</span>, <span class="st">"Not changing for a while"</span>, <span class="st">"Not available at time of last purchase"</span>, <span class="st">"Other"</span>, <span class="st">"Gender"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in names(df)[1:ncol(df)] = c("Sex/Age group", "Cost", "Inadequete
-public charging facilities", : 被替换的项目不是替换值长度的倍数</code></pre>
+public charging facilities", : number of items to replace is not a multiple of
+replacement length</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fix the accuracy of numbers</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
@@ -390,7 +391,7 @@ public charging facilities", : 被替换的项目不是替换值长度的倍数<
 <pre><code>Warning: There was 1 warning in `mutate()`.
 ℹ In argument: `Cost = round(as.numeric(Cost), 1)`.
 Caused by warning:
-! 强制改变过程中产生了NA</code></pre>
+! NAs introduced by coercion</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reshaping gender data</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>

@@ -7,25 +7,26 @@ title: "DATA"
 [can find the EV sales data here](https://www.iea.org/data-and-statistics/data-tools/global-ev-data-explorer)
 # we can get these data :
 
-![original_data_82](image/82.png){width=400}
+![original_data_82](../images/82.png){width=400}
 
-![original_data_26](image/26.png){width=1500}
+![original_data_26](../image/26.png){width=1500}
 
 # After cleaning we can get :
 
-![cleaned_82](image/df0.png){width=400}
+![cleaned_82](../image/df0.png){width=400}
 
-![cleaned_26_1](image/df1.png){width=1500}
+![cleaned_26_1](../image/df1.png){width=1500}
 
-![cleaned_26_2](image/df2.png){width=1500}
+![cleaned_26_2](../image/df2.png){width=1500}
 
 # overview
 
 This dataset provides insights into various reasons why individuals do not own an Electric Vehicle (EV) based on age and gender groups. The first column categorizes the respondents by their sex and age groups, such as "Male", "18-29", "30-44", and so on. The subsequent columns list a range of reasons, quantified by percentages, indicating how prevalent each reason is among the respective group. For example, "Cost" seems to be a predominant factor for many age groups. Some cells contain 'N/A', suggesting that the data for that specific category is not available or not applicable. Additionally, there are footnotes at the bottom providing further explanations for specific categories, such as what "Includes lack of power/acceleration in EV" entails. This table offers a comprehensive overview of the potential barriers faced by various demographics when considering the purchase of an EV.
 
 
+# About the EV car sale data
 
-
+The provided dataset presents an extensive historical overview of electric vehicle (EV) sales from 2011 to 2022, encompassing 36 different regions and focusing exclusively on cars. It offers insights across seven distinct parameters such as 'EV stock', 'EV stock share', 'EV sales share', and 'EV sales', with entries totaling 2,776. The data reveals that 'EV' is the most common powertrain type recorded and uses a variety of units, with 'Vehicles' being predominant, suggesting the data primarily tracks the number of EVs sold. The range of values for sales and shares is vast, indicating varied levels of EV market penetration. On average, the data sits around the year 2016, with an average value that could represent either the number of vehicles or percentage shares, depending on the context of the unit. The initial entries from Australia provide a snapshot of the dataset's structure, distinguishing between 'BEV' (Battery Electric Vehicles) and general 'EV' categories, highlighting the diversity of electric vehicle technologies captured within this dataset. This compilation is instrumental for dissecting the growth patterns of the EV market, understanding regional adoption trends, and forecasting future developments in the EV sector.
 
 
 

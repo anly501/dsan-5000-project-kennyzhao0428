@@ -5,11 +5,33 @@ title: "CODE"
 link to my git hub: 
 [git hub](https://github.com/anly501/dsan-5000-project-kennyzhao0428.git)
 
+# eda code
+```{r}
+df=read.csv("/Users/kenny/Desktop/dsan-5000-project-kennyzhao0428/data/01-modified-data/EVsalesHistori.csv")
+# Trend Analysis: Yearly EV Sales and Stock
+library(ggplot2)
 
+# Total sales
+ev_sales_trend <- ggplot(df[df$parameter == "EV sales", ], aes(x = year, y = value, group = powertrain, color = powertrain)) +
+  geom_line() +
+  labs(title = "EV Sales Trend Over Years", x = "Year", y = "Sales Volume")
 
+# Total stock
+ev_stock_trend <- ggplot(df[df$parameter == "EV stock", ], aes(x = year, y = value, group = powertrain, color = powertrain)) +
+  geom_line() +
+  labs(title = "EV Stock Trend Over Years", x = "Year", y = "Stock Volume")
 
+# Print the plots
+print(ev_sales_trend)
+print(ev_stock_trend)
 
+ev_sales_share <- ggplot(df[df$parameter == "EV sales share", ], aes(x = year, y = value, fill = powertrain)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "EV Sales Share Over Years", x = "Year", y = "Sales Share (%)")
 
+# Print the plot
+print(ev_sales_share)
+```
 
 
 
